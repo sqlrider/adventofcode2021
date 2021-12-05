@@ -6,7 +6,7 @@ $puzzleinput = Get-Content -Path "$($PSScriptRoot)\puzzleinput.txt"
 # There are 500 vents
 $num_vents = $puzzleinput.Count
 
-# Create a ThermalVent (vector) class with flag for direction
+# Create a ThermalVent (2D line) class with flag for direction
 Class ThermalVent
 {
     [int]$x1
