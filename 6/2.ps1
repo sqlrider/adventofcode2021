@@ -1,4 +1,4 @@
-﻿# https://adventofcode.com/2021/day/6
+# https://adventofcode.com/2021/day/6
 # Part 2
 
 $puzzleinput = Get-Content -Path "$($PSScriptRoot)\puzzleinput.txt"
