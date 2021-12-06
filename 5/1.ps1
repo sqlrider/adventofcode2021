@@ -60,7 +60,6 @@ for($a = 0; $a -lt $num_vents; $a++)
 # Initialise grid
 [int[,]]$grid = [int[,]]::New(1000,1000)
 
-
 # Loop through vents and increment grid counters
 for($a = 0; $a -lt $num_vents; $a++)
 {
