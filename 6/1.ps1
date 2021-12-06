@@ -45,7 +45,6 @@ foreach($initial_lifecycle in $fishinput)
 }
 
 # How many lanternfish would there be after 80 days?
-
 for($i = 0; $i -lt 80; $i++)
 {
     # Need to grab the fish count here as $fish.Count is updated in real time during next loop leading to new fish being cycled in same turn
