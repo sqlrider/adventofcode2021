@@ -1,4 +1,4 @@
-﻿# https://adventofcode.com/2021/day/12
+# https://adventofcode.com/2021/day/12
 # Part 1
 
 $puzzleinput = Get-Content -Path "$($PSScriptRoot)\puzzleinput.txt"
@@ -21,14 +21,12 @@ $puzzleinput
 # Need a class to represent a cave, that has a name, a type (small or big) and a list of connected caves
 class Cave
 {
-    Cave($cavename, $cavetype)
+    Cave($cavename)
     {
         $this.Name = $cavename
-        $this.Type = $cavetype
     }
 
     [string]$Name
-    [string]$Type
 
     # This should ideally be an array of pointers to other [Cave] objects, but can't do it in Powershell.
     # So needs to be strings representing caves instead.
@@ -61,7 +59,6 @@ function Traverse
 
         foreach($connectedcave in $inputcave.ConnectedCaves)
         {
-            # Since we can't use pointers in Powershell, need to loop through caves to find correct one
             foreach($cave in $caves)
             {
                 if($cave.Name -eq $connectedcave)
@@ -85,14 +82,9 @@ foreach($row in $puzzleinput)
 
     for($i = 0; $i -le 1; $i++)
     {
-        if($caveslist.Contains($pair[$i]))
-        {
-            #Write-Output "Cave already added"
-        }
-        else
+        if(!$caveslist.Contains($pair[$i]))
         {
             $caveslist += $pair[$i]
-            #Write-Output "Added cave $($pair[$i])"
         }
     }   
 }
@@ -100,15 +92,7 @@ foreach($row in $puzzleinput)
 # Now populate caves array
 foreach($cave in $caveslist)
 {
-    if($cave -cmatch "[A-Z]")
-    {
-        $caves += [Cave]::New($cave,"big")
-    }
-    else
-    {
-        $caves += [Cave]::New($cave,"small")
-    }
-
+    $caves += [Cave]::New($cave)
 }
 
 # Add links between caves
